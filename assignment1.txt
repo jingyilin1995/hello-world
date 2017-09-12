@@ -1,0 +1,367 @@
+1. Hiking
+ 1.1. Rent a ReachNow to drive to mountain rainier on weekends with friends
+ 1.2. On the way, fill the gas
+ 1.3. On the way, eat at restaurant for lunch
+ 1.4. Buy the ticket to get into the park
+1.5. Book a hotel or check in the hotel.
+
+Answer:
+1. HiKing
+Objects and Behaviors:
+Car
+	Data: rental, gas, 
+	Behavior: startEngine, stopEngine
+Driver
+	Data: name, age, 
+	Behavior: startCar, parkingCar, gotoGasStation, gotoRestuarant, eating, addGas, oder,buyTicket, checkIn, checkOut
+Friend
+	Data: name, age, 
+	Behavior: eating, checkIn, checkOut, buyTicket, oder 
+GasStation:
+	Data: GasPrice, GasSpecies,
+	Behavior: DoBussiness, CloseBussiness
+Restaurant:
+	Data: name, Price
+	Behavior: open, close, makeFood, 
+Park:
+	Data: price
+	Behavior: open, close
+Hotel:
+	Data: roomType, price 
+	Behavior: cleanRooms
+
+Car ReachNow
+Driver A
+Friend B
+GasStation C
+Restuarant D
+Park E
+Hotel F
+
+A.rentCar -> ReachNow: startEngine
+if startEngine is true
+	A.pickupFriend->B
+	if pickupFriend is true
+		A.gotoGasStation-> C
+		if C.doBussiness
+			A.addGas
+		end
+		A.gotoRestuarant-> D
+		if D.open
+			A.oder
+			B.oder
+		end
+		if A.finishLunch and B.finishiLunch
+			A.gotoPark-> E
+			if E.open
+				A.buyticket
+				B.buytichet
+				A.Hiking
+				B.Hiking
+			else
+				A.cantGoHiking and B.cantGoHiking
+			A.gotoHotel-> F
+			if F.open
+				A.checkin
+				B.checkin
+					loop
+						A.wantsToGoHiking-> E: hiking
+						B.wantsToGohiking-> E: hiking
+						F.cleanRooms
+						if A.wantsToGoHome
+							A.checkOut
+							B.checkOut
+						end
+					end 
+			
+			end
+			
+		end			
+	end
+else
+	A.cantGoHiking
+end
+
+2.Organise a career fair(Suppose you are the organiser)
+
+Answer
+Objects and Behaviors
+organiser
+	Data: name, age, phone
+	Behavior: search, contact, authorize, serviceForStudents
+Internet
+	Data: collection of companies
+	Behavior: search
+Company
+	Data: Google, Amazon, Facebook, 
+		: Group of company (collection of company)
+	Behavior: participate
+student
+	Data: NUID, name, quantity
+	Behavior: checkIn, checkOut
+place
+	Data: address
+	behavior: open, close
+Date
+	Data: Monday, Tuesday, Wednsday, Thursday, Friday, Satuaday, Sunday
+	Behavior: 
+
+sequence of invoking behaviors on objects:
+
+OrganizeACareerFair
+organiser Jingyi,
+Company Google, Amazon, Facebook,
+student allISStudents
+place NEU
+Date nextMonday
+
+If Internet is available
+	Jingyi.searchInInternet -> Internet, question: Collection of Company
+	Loop
+		if Jingyi.findNoCompany
+			break
+		end
+		Jingyi.findCompanyContactInformation
+		if Jingyi.findGoogleContactInformation
+			companyNum=companyNum+1
+		end
+		if Jingyi.findAmazonContactInformation
+			companyNum=companyNum+1
+		end
+		if Jingyi.findFacebookContactInformation
+			companyNum=companyNum+1
+		end
+		if companyNum==3
+			break
+		end
+	end
+	Loop
+		Jingyi.contactCompany
+		if Company.participate is false
+			companyNum=companyNum-1
+		end
+	end
+	Jingyi.bookPlace
+	if NEU is empty on nextMonday
+		place=NEU
+	end
+	Jingyi.emailAllISStudent
+	Loop 
+		if someone.checkin
+			studentNum=studentNum+1
+		end
+	end 
+else
+	Jingyi.searchInInternetLater
+	
+3. Order Pizza from Pizza Hut
+
+Answer
+Objects and Behaviors
+
+customer
+	Data: name, phoneNumber, address
+	Behavior: call, oder, speak, purchase
+restuarant:
+	Data: name, phoneNumber
+	Behavior: recieveCall, answer, speak, deliver
+Pizza:
+	Data: size, prize, taste
+	Behavior: 
+InternetPhoneService:
+	Data: name
+	Behavior: connect, speakTest, sendVideo, authorize
+	
+Sequence of Flow - Invoke Objects with Behaviors
+
+cutomer: Jingyi;
+resruarant: PizzaHut;
+InternetPhoneService Vonage;
+Pizza: A
+
+if authorize is true
+	Jingyi.connect -> Vonage, PizzaHut : connected
+	if connected is true
+		Loop 
+			Jingyi.talk
+			PizzaHut.respond
+			if Jingyi.findRightPizza
+				Jingyi.order；
+				PizzaHut.cook；
+				Jingyi.purchase;
+			end
+			if Jingyi.wantsToEndTheCalls
+				Jingyi.endTheCall -> Vonage
+			end
+		end
+		if PizzaHut.cook is true
+			PizzaHut.deliver -> Pizza:A
+		end 
+		
+	end 
+else
+	Jingyi.cantOrderPizza
+end
+		
+4. Design a code sharing platform (eg: Github)
+4.1 Design
+4.1.1 Designer find information ( the background and the current situation) about designing a code sharing platform.
+4.1.2 Analyze and design the platform ( requirement analysis, System module design, Database design...)
+4.1.3 Realize the platform ( download IDE, programming...)
+4.1.4 Test the platform 
+
+4.2 the code sharing platform
+4.2.1 the platform need users to enter their information in oder to authorize.
+4.2.2 users can use make their own repository.
+4.2.3 users can use this platform to make copy of others' code.
+4.2.4 users can compare their own code with the original code.(paltform will show the differences)
+4.2.5 users can merge their own code to others' code.
+
+
+4.1 objects and behaviors
+
+designer:
+	Data: name, age, address
+	Behavior: design, research, analyze, realize, test
+Internet:
+	Data: group of Websites
+	Behaviors: searchForDesignWebsites
+platform：
+	Data: name, function, 
+	Behaviors: shareCode,
+IDE(Integrated Development Environment):
+	Data: name,
+	Behabior: authorize
+programmingLanguage:
+	Data: name
+	Behavior:
+
+Designer Jingyi
+Internet internet
+platform Github
+IDE eclipse
+programming java 
+
+If Internet.is Avaliable
+	Jingyi.searchInInternet -> internet, question : background and current situation of platfrom design
+	loop
+		if Jingyi.findsNoPages
+			break
+		end
+		Jingyi.findDesigrableWebsiteInPage -> internet, question, page Number : website
+		Jingyi.leanrnAboutPlatformDesign
+		if Jingyi.findEnoughInfomation
+			break
+		else
+			page=page+1
+		end
+	end
+	Github=platform
+	Jingyi.analysisRequirement
+	Jingyi.designSystemModule
+	Jingyi.DesignDatabase
+	if Jingyi.finishAnalyzeAndDesign is true
+		eclipse=IDE
+		Jingyi.searchInInternet -> internet, question : download eclipse
+		loop
+		if Jingyi.findsNoPages
+			break
+		end
+		Jingyi.findDesigrableRecourceInPage -> internet, question, page Number : Resource
+		if Jingyi.findLegalResource
+			Jingyi.downdloadEclipse
+			break
+		else
+			page=page+1
+		end
+		Jingyi.programming
+		if Jingyi.realizedGithub is true
+			loop
+				Jingyi.testThePlatform
+				if platform.shareCode is true
+					break
+				else
+				    Jingyi.reviseTheCode
+				end
+			end
+				
+		end
+	end
+end
+
+4.2 the code sharing platform
+
+objects and behaviors
+platform
+	Data: users, repositories
+	behavior: authorize
+users
+	Data: username, password
+	behavior: copy, merge, login, logout
+
+if user.creatAccountIsSuccessful -> username, password, email
+	platform.askforUsername
+	platform.askforPassword
+	user.printUsername  
+	user.PrintPassword
+	loop
+		if usernameIsIncorrect or PasswordIsIncorrect
+			platform.askForInformation
+		end
+		if userNameIsCorrect and PasswordIsCorrect
+			break			
+		end
+	end
+	if Platform.Authorize is true
+		User.creatRepository -> name: repository
+		User.copyOthersCode
+		User.uploadTheirOwnCode
+		Platform.compareCode
+		if code.NoDifferences is true
+			code.mergeAutomatically
+		else
+			user.chooseWhetherToMerge
+		end
+	end
+end 
+	
+5. Design a soft-drink/snacks vending machine
+5.1 Designer does research about vending machine
+5.2 Decide which kinds of goods the machine will vend
+5.3 Designer design dhe size,weight,matieral of the machine
+	
+objects and behaviors
+Designer:
+	Data: name
+	Behavior: search, analyze, design, 
+vendingMachine:
+	Data: size, weight, material, product[] products
+	behavior: vend, changeMoney, getMoney
+product:
+	Data: product[] products
+	behavior
+	
+if Internet.isAvailable
+	Jingyi.doResearchInInternet -> internet, question : methods of design vending Machine
+	loop
+		if Jingyi.findsNoPages
+			break
+		end
+		loop
+			if Jingyi.findsRightKindOfproduct
+		    product=product+1
+			end
+		end
+		page=page+1
+	end
+    if Jingyi.finishDecidingWhichKindsOfProductsToDo is true
+		Jingyi.designTheSizeOfTheMachine
+		Jingyi.designTheWeightOfTheMachine
+		Jinyig.designTheMoneySystemOfTheMachine
+		if TheSizeOfTheMachineIsCorrect and TheWeightOfTheMachineIsCorrect 
+			Jingyi.FinishDesign
+		else
+		    Jingyi.reviseTheDesign
+		end
+	end
+end
